@@ -139,7 +139,7 @@ laddr = "tcp://0.0.0.0:26656"
 external_address = ""
 
 # Comma separated list of seed nodes to connect to
-seeds = "a21ebc6e5be38365fe3a40f57b3f1e3f70e29aa4@public-bhchain-167244571.ap-northeast-1.elb.amazonaws.com:26656"
+seeds = "a21ebc6e5be38365fe3a40f57b3f1e3f70e29aa4@testnet.bluehelix.network:26656"
 
 # Comma separated list of nodes to keep persistent connections to
 persistent_peers = ""
