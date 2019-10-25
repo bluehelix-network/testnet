@@ -4,7 +4,7 @@
 
 ## Command Line Interface (CLI)
 
-CLI tool (bhcli) provide the interaction with Blue Helix Chain, including queries and submitting transactions.
+CLI tool (bhcli) provide the interaction with Bluehelix Chain, including queries and submitting transactions.
 
 The tool is executed as
 
