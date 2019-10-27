@@ -1,7 +1,7 @@
 # Reference
 
 *Read this in other languages: English, 简体中文(TBD).*
-
+[toc]
 ## Command Line Interface (CLI)
 
 CLI tool (bhcli) provide the interaction with Bluehelix Chain, including queries and submitting transactions.
