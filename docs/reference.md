@@ -1,7 +1,6 @@
 # Reference
 
 *Read this in other languages: English, 简体中文(TBD).*
-[toc]
 ## Command Line Interface (CLI)
 
 CLI tool (bhcli) provide the interaction with Bluehelix Chain, including queries and submitting transactions.
@@ -61,7 +60,7 @@ TBD
 
 subcommand 'tx' can Generate and broadcast transactions.
 ```console
-$ bhcli tx -h
+$ docker-compose run bhcli tx -h
 Transactions subcommands
 
 Usage:
@@ -197,7 +196,7 @@ Global Flags:
 
 ### Broadcast transactions generated offline
 ```concole
-$ bhcli tx broadcast -h
+$ docker-compose run bhcli tx broadcast -h
 Broadcast transactions created with the --generate-only
 flag and signed with the sign command. Read a transaction from [file_path] and
 broadcast it to a node. If you supply a dash (-) argument in place of an input
@@ -239,7 +238,7 @@ Global Flags:
 ### custodian unit 
 
 ```console
-$ bhcli tx cu -h
+$ docker-compose run bhcli tx cu -h
 cu subcommands
 
 Usage:
@@ -265,7 +264,7 @@ Use "bhcli tx cu [command] --help" for more information about a command.
 
 #### custodian unit keygen
 ```console
-$ bhcli tx cu keygen -h
+$ docker-compose run bhcli tx cu keygen -h
  Example: keygen BHBTC BHPSfYjrgEgM97gpCWRd2UStvRVRqFgw6mQ
 
 Usage:
@@ -301,7 +300,7 @@ Global Flags:
 
 #### custodian unit keygenfinish
 ```concole
-$ bhcli tx cu keygenfinish -h
+$ docker-compose run bhcli tx cu keygenfinish -h
 Example: 
   keygenfinish 1 BHPSfYjrgEgM97gpCWRd2UStvRVRqFgw6mQ  mhoGjKn5xegDXL6u5LFSUQdm5ozdM6xao9 BHPSfYjrgEgM97gpCWRd2UStvRVRqFgw6mQ
         BHVw8uKtTFJRR7Xw2L98pQkmtEBM4btWhTB
@@ -339,7 +338,7 @@ Global Flags:
 
 #### custodian unit keygencancel
 ```concole
-$ bhcli tx cu keygencancel -h
+$ docker-compose run bhcli tx cu keygencancel -h
 
 Example:
   key_gen_cancel order_id
@@ -377,7 +376,7 @@ Global Flags:
 
 ### token transaction subcommands
 ```console
-$ bhcli tx token -h
+$ docker-compose run bhcli tx token -h
 token transaction subcommands
 
 Usage:
@@ -403,7 +402,7 @@ Use "bhcli tx token [command] --help" for more information about a command.
 
 #### token token-keygen
 ```console
-$ bhcli tx token token-keygen -h
+$ docker-compose run bhcli tx token token-keygen -h
 
 		Example: token-keygen symbol address_type
 
@@ -436,11 +435,12 @@ Global Flags:
       --home string       directory for config and data (default "/Users/admin/.bhcli")
   -o, --output string     Output format (text|json) (default "text")
       --trace             print out full stack trace on errors
+
 ```
 
 #### token token-keygenfinish
 ```console
-$ bhcli tx token token-keygenfinish -h
+$ docker-compose run bhcli tx token token-keygenfinish -h
 
 		Example: token-keygenfinish order_id to address []key_nodes
 
@@ -477,7 +477,7 @@ Global Flags:
 
 #### token token-keygencancel
 ```console
-$ bhcli tx token token-keygencancel -h
+$ docker-compose run bhcli tx token token-keygencancel -h
 
 		Example: token-keygencancel order_id
 
@@ -544,7 +544,7 @@ Use "bhcli tx asset [command] --help" for more information about a command.
 
 #### asset deposit
 ```concole
-$ bhcli tx asset deposit -h
+$ docker-compose run bhcli tx asset deposit -h
   Deposit asset to BHEX Chain, and BHEX Chain will check it through the real chain.
   Example: bhcli tx asset deposit --from alice  --chain-id bhexchain 100bheth 5377064 0x2e9a512fc6fea120e567ed5faef1440e4f66b5ff 0x1b5894be4f66eb75a63b5010db4a0a5cfe0b589956b74086bf64585939da1659
 
@@ -581,7 +581,7 @@ Global Flags:
 
 #### asset collect-start
 ```console
-$ bhcli tx asset collect-start -h
+$ docker-compose run bhcli tx asset collect-start -h
   collect-start to sign tx for collect asset from sepecified address to withdrawal address
   Example: bhcli tx asset collect-start --from alice --chain-id bhexchain 100bheth 633578 21000 10000 BHKy7eQidQcEKG1nA24bdPDR2nNRokR9TEg 0x15a09efb2d85c888fa8960941f1fffe5251bb37b 0x3e7e53729c21b4ccba3e8637cca5d3875475731f
 
@@ -618,7 +618,7 @@ Global Flags:
 
 #### asset collect-finish
 ```console
-$ bhcli tx asset collect-finish -h
+$ docker-compose run bhcli tx asset collect-finish -h
   collect-finish collect asset, the unspent transaction fee will be return.
   Example: bhcli tx asset collect-finish  --from alice  --chain-id bhexchain 3526 21000 5377064 0x1b5894be4f66eb75a63b5010db4a0a5cfe0b589956b74086bf64585939da1659
 
@@ -655,7 +655,7 @@ Global Flags:
 
 #### asset collect-cancel
 ```console
-$ bhcli tx asset collect-cancel -h
+$ docker-compose run bhcli tx asset collect-cancel -h
   collect-cancel collect asset, the collect order will be canceled.
   Example: bhcli tx asset collect-cancel  --from alice  --chain-id bhexchain 2235
 
@@ -729,7 +729,7 @@ Global Flags:
 
 #### asset withdrawal-finish
 ```console
-$ bhcli tx asset withdrawal-finish -h
+$ docker-compose run bhcli tx asset withdrawal-finish -h
   withdrawal-finish withdrawal asset, the unspent transaction fee will be return.
   Example: bhcli tx asset withdrawal-finish  --from alice  --chain-id bhexchain 3526 21000 5377064 0x1b5894be4f66eb75a63b5010db4a0a5cfe0b589956b74086bf64585939da1659
 
@@ -766,7 +766,7 @@ Global Flags:
 
 #### asset withdrawal-cancel
 ```console
-$ bhcli tx asset withdrawal-cancel -h
+$ docker-compose run bhcli tx asset withdrawal-cancel -h
   withdrawal-cancel withdrawal asset, the withdrawal order will be canceled.
   Example: bhcli tx asset withdrawal-cancel  --from alice  --chain-id bhexchain 2356
 
@@ -803,7 +803,7 @@ Global Flags:
 
 ### Create and sign a send tx
 ```console
-$ bhcli tx send  -h
+$ docker-compose run bhcli tx send  -h
 Create and sign a send tx
 
 Usage:
@@ -839,7 +839,7 @@ Global Flags:
 
 ### Distribution transactions
 ```console
-$ bhcli tx distr -h
+$ docker-compose run bhcli tx distr -h
 Distribution transactions subcommands
 
 Usage:
@@ -865,7 +865,7 @@ Use "bhcli tx distr [command] --help" for more information about a command.
 
 #### Distribution withdraw-rewards
 ```console
-$ bhcli tx distr withdraw-rewards -h
+$ docker-compose run bhcli tx distr withdraw-rewards -h
 witdraw rewards from validator-addr to delegator address, and optionally withdraw validator's commission also if delegator is a validator operator:
 		$ bhcli tx distr withdraw-rewards BHfeAYhzf54jNp7vWmvVapgjgsoEr8P2spF --from jack
 		$ bhcli tx distr withdraw-rewards BHfeAYhzf54jNp7vWmvVapgjgsoEr8P2spF --from alice --commission  //if alice is a  val operator
@@ -904,7 +904,7 @@ Global Flags:
 
 #### Distribution set-withdraw-addr
 ```console
-$ bhcli tx distr set-withdraw-addr -h
+$ docker-compose run bhcli tx distr set-withdraw-addr -h
 set withdraw-addr on behalf of delegator, default  withdrawal addr = delegator address:
 		$ bhcli tx set-withdraw-addr BHZHjUFBF3sgx2kpWEjsMGgGMSJRzohb8aa --from alice
 
@@ -941,7 +941,7 @@ Global Flags:
 
 #### Distribution withdraw-all-rewards
 ```console
-$ bhcli tx distr withdraw-all-rewards -h
+$ docker-compose run bhcli tx distr withdraw-all-rewards -h
 Withdraw all rewards for a single delegator:
 		$ bhcli tx distr withdraw-all-rewards --from alice
 
