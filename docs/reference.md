@@ -50,7 +50,294 @@ $ docker-compose run bhcli [command] --help
 
 ## Local keystore and custodian unit information
 
-TBD
+### Subcommand `keys` getting help
+
+The subcommand `keys` allows you to manage your local keystore for tendermint.
+For keys detail preview, just run:
+
+```console
+$ docker-compose run bhcli keys -h
+Keys allows you to manage your local keystore for tendermint.
+
+    These keys may be in any format supported by go-crypto and can be
+    used by light-clients, full nodes, or any other application that
+    needs to sign with a private key.
+
+Usage:
+  bhcli keys [command]
+
+Available Commands:
+  mnemonic    Compute the bip39 mnemonic for some input entropy
+  add         Add an encrypted private key (either newly generated or recovered), encrypt it, and save to disk
+  list        List all keys
+  show        Show key info for the given name
+              
+  delete      Delete the given key
+  update      Change the password used to protect private key
+
+Flags:
+  -h, --help   help for keys
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/root/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+
+Use "bhcli keys [command] --help" for more information about a command.
+
+```
+### Create a bip39 mnemonic
+
+Mnemonic can easily restore your private key.
+
+```console
+ $ docker-compose run bhcli keys mnemonic -h
+Create a bip39 mnemonic, sometimes called a seed phrase, by reading from the system entropy. To pass your own entropy, use --unsafe-entropy
+
+Usage:
+  bhcli keys mnemonic [flags]
+
+Flags:
+  -h, --help             help for mnemonic
+      --unsafe-entropy   Prompt the user to supply their own entropy, instead of relying on the system
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/root/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+
+```
+
+### Create a new private key
+
+```console
+$ docker-compose run bhcli keys add -h
+Derive a new private key and encrypt to disk.
+Optionally specify a BIP39 mnemonic, a BIP39 passphrase to further secure the mnemonic,
+and a bip32 HD path to derive a specific account. The key will be stored under the given name
+and encrypted with the given password. The only input that is required is the encryption password.
+
+If run with -i, it will prompt the user for BIP44 path, BIP39 mnemonic, and passphrase.
+The flag --recover allows one to recover a key from a seed passphrase.
+If run with --dry-run, a key would be generated (or recovered) but not stored to the
+local keystore.
+Use the --pubkey flag to add arbitrary public keys to the keystore for constructing
+multisig transactions.
+
+You can add a multisig key by passing the list of key names you want the public
+key to be composed of to the --multisig flag and the minimum number of signatures
+required through --multisig-threshold. The keys are sorted by address, unless
+the flag --nosort is set.
+
+Usage:
+  bhcli keys add <name> [flags]
+
+Flags:
+      --account uint32            Account number for HD derivation
+      --dry-run                   Perform action, but don't add key to local keystore
+  -h, --help                      help for add
+      --indent                    Add indent to JSON response
+      --index uint32              Address index number for HD derivation
+  -i, --interactive               Interactively prompt user for BIP39 passphrase and mnemonic
+      --ledger                    Store a local reference to a private key on a Ledger device
+      --multisig strings          Construct and store a multisig public key (implies --pubkey)
+      --multisig-threshold uint   K out of N required signatures. For use in conjunction with --multisig (default 1)
+      --no-backup                 Don't print out seed phrase (if others are watching the terminal)
+      --nosort                    Keys passed to --multisig are taken in the order they're supplied
+      --pubkey string             Parse a public key in bech32 format and save it to disk
+      --recover                   Provide seed phrase to recover existing key instead of creating
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/root/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+
+```
+
+### List all keys 
+
+Subcommand `list` can list all public keys
+
+```console
+$ docker-compose run bhcli keys list -h
+Return a list of all public keys stored by this key manager
+along with their associated name and address.
+
+Usage:
+  bhcli keys list [flags]
+
+Flags:
+  -h, --help     help for list
+      --indent   Add indent to JSON response
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/root/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+
+```
+
+### show keyname info
+Subcommand `show` can show the designate keyname info, seem like the `list` subcommand.
+
+```console
+$ docker-compose run bhcli keys show bolen
+NAME:   TYPE:   ADDRESS:                                        PUBKEY:
+bolen   local   cosmos1rknv9e5akqynqexexkp5juvrd3elv69hrdr2zr   cosmospub1addwnpepq0xecnv35txrecwm0a22x6l82v92a4shjuy0ut560mwxhhwaqr205y8l7ys
+
+$ docker-compose run bhcli keys list bolen
+NAME:   TYPE:   ADDRESS:                                        PUBKEY:
+bolen   local   cosmos1rknv9e5akqynqexexkp5juvrd3elv69hrdr2zr   cosmospub1addwnpepq0xecnv35txrecwm0a22x6l82v92a4shjuy0ut560mwxhhwaqr205y8l7ys
+
+```
+
+### Delete the given key
+
+```console
+$ docker-compose run bhcli keys delete -h
+Delete a key from the store.
+
+Note that removing offline or ledger keys will remove
+only the public key references stored locally, i.e.
+private keys stored in a ledger device cannot be deleted with
+gaiacli.
+
+Usage:
+  bhcli keys delete <name> [flags]
+
+Flags:
+  -f, --force   Remove the key unconditionally without asking for the passphrase
+  -h, --help    help for delete
+  -y, --yes     Skip confirmation prompt when deleting offline or ledger key references
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/root/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+
+```
+
+### Update the password of protecting private key
+
+```console
+$ docker-compose run bhcli keys update -h
+Change the password used to protect private key
+
+Usage:
+  bhcli keys update <name> [flags]
+
+Flags:
+  -h, --help   help for update
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/root/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+
+```
+**For instance:**
+
+```console
+$ docker-compose run bhcli keys update bolen -o text
+Enter the current passphrase:
+Enter the new passphrase:
+Repeat the new passphrase:
+Password successfully updated!
+
+```
+
+### Subcommand `cu` getting help
+
+```console
+$ docker-compose run bhcli cu help
+Add or view custodian unit info from local private keys
+
+Usage:
+  bhcli cu [command]
+
+Available Commands:
+  show        Show custodian unit addresses or public keys for one or more key names
+  list        list custodian unit addresses for all key names
+
+Flags:
+  -h, --help   help for cu
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/root/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+
+Use "bhcli cu [command] --help" for more information about a command.
+```
+### CU list command
+
+The subcommand `cu list` will list all cu accounts
+```console
+$ docker-compose run bhcli cu list -h
+list custodian unit addresses for all key names
+
+Usage:
+  bhcli cu list [flags]
+
+Flags:
+  -h, --help   help for list
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/root/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+
+```
+For instance:
+
+```console
+$ docker-compose run bhcli cu list
+Custodian Unit Address for bolen: BHNbhbGfZwcZeakMHPUaYARdZquUdiBahYq
+Custodian Unit Public Key for bolen: BHPubKey:bpJuCxZghLVMU4xsYEPwiKDFWC3HoL9scsk5uK2RBQL4MqbcCzND
+
+```
+
+### CU show command
+
+The subcommand `cu show` will show designate cu account info
+
+```console
+$ docker-compose run bhcli cu show -h
+Show custodian unit addresses or public keys for one or more key names
+
+Usage:
+  bhcli cu show [name [name...]] [flags]
+
+Flags:
+  -a, --cu_address   Output the address only (overrides --output)
+  -h, --help         help for show
+      --indent       Add indent to JSON response
+  -p, --pubkey       Output the public key only (overrides --output)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/root/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+
+```
 
 ## Query chain states
 
