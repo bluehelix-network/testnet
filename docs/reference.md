@@ -1263,4 +1263,584 @@ Global Flags:
   -o, --output string     Output format (text|json) (default "text")
       --trace             print out full stack trace on errors
 ```
+#### List all querier commands
+```
+$docker-compose run bhcli query -h
+Querying subcommands
+
+Usage:
+  bhcli query [command]
+
+Aliases:
+  query, q
+
+Available Commands:
+  tendermint-validator-set Get the full tendermint validator set at given height
+  block                    Get verified data for a the block at given height
+  txs                      Search for paginated transactions that match a set of tags
+  tx                       Find a transaction by hash in a committed block.
+
+  cu                       Querying commands for the custodianunit module
+  token                    Querying commands for the token module
+  address                  Querying commands for the address module
+  distr                    Querying commands for the distribution module
+
+Flags:
+  -h, --help   help for query
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+
+Additional help topics:
+  bhcli query
+  bhcli query
+
+Use "bhcli query [command] --help" for more information about a command.
+```
+
+#### Retrieve tendermint validator set at given height 
+```
+$docker-compose run bhcli query tendermint-validator-set -h
+Get the full tendermint validator set at given height
+
+Usage:
+  bhcli query tendermint-validator-set [height] [flags]
+
+Flags:
+  -h, --help          help for tendermint-validator-set
+      --indent        indent JSON response
+  -n, --node string   Node to connect to (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+
+#### Retrieve block contents at given height
+```
+$docker-compose run bhcli query block -h
+Get verified data for a the block at given height
+
+Usage:
+  bhcli query block [height] [flags]
+
+Flags:
+  -h, --help          help for block
+  -n, --node string   Node to connect to (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+#### Search for transaction that match the specified tags 
+```
+$docker-compose run bhcli query txs -h
+Search for transactions that match the exact given tags where results are paginated.
+
+Example:
+$ gaiacli query txs --tags '<tag1>:<value1>&<tag2>:<value2>' --page 1 --limit 30
+
+Usage:
+  bhcli query txs [flags]
+
+Flags:
+  -h, --help           help for txs
+      --limit uint32   Query number of transactions results per page returned (default 30)
+  -n, --node string    Node to connect to (default "tcp://localhost:26657")
+      --page uint32    Query a specific page of paginated results (default 1)
+      --tags string    tag:value list of tags that must match
+      --trust-node     Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+
+#### Search a transaction by a specified hash
+```
+$docker-compose run bhcli query tx -h
+Find a transaction by hash in a committed block.
+
+Usage:
+  bhcli query tx [hash] [flags]
+
+Flags:
+  -h, --help          help for tx
+  -n, --node string   Node to connect to (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+
+#### List custodianunit query commands 
+```
+$docker-compose run bhcli query cu -h
+Querying commands for the custodianunit module
+
+Usage:
+  bhcli query cu [command]
+
+Available Commands:
+  info        Query custodian unit info
+  assets      Query assets info of a custodian unit
+  asset       Query asset info of a custodian unit
+  order       Query custodianuint order by ID
+  orders      Query custodianuint orders
+
+Flags:
+  -h, --help   help for cu
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+
+Use "bhcli query cu [command] --help" for more information about a command.
+```
+
+#### Query a specified custodianunit infomation
+```
+$docker-compose run bhcli query cu info -h
+Query custodian unit info
+
+Usage:
+  bhcli query cu info [cuaddress] [flags]
+
+Flags:
+  -h, --help          help for info
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+
+#### Query a custodianuint's all assets 
+```
+$docker-compose run bhcli query cu assets -h
+Query assets info of a custodian unit
+
+Usage:
+  bhcli query cu assets [cuaddress] [flags]
+
+Flags:
+  -h, --help          help for assets
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+
+#### Query a custodianuint's asset specified by symbol
+```
+$docker-compose run bhcli query cu asset -h
+Query asset info of a custodian unit
+
+Usage:
+  bhcli query cu asset [cuaddress] [symbol] [flags]
+
+Flags:
+  -h, --help          help for asset
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+
+#### Query a custodianuint's all orders
+```
+$docker-compose run bhcli query cu orders -h
+Query custodianuint orders
+
+Usage:
+  bhcli query cu orders [cuaddress]  [flags]
+
+Flags:
+  -h, --help          help for orders
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+
+#### Query a custodianuint's order by specified order id
+```
+$docker-compose run bhcli query cu order -h
+Query custodianuint order by ID
+
+Usage:
+  bhcli query cu order [cuaddress] [id] [flags]
+
+Flags:
+  -h, --help          help for order
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+
+#### List all token query commands 
+```
+$docker-compose run bhcli query token -h
+Querying commands for the token module
+
+Usage:
+  bhcli query token [command]
+
+Available Commands:
+  token       token symbol
+  tokens      tokens
+  decimal     decimal symbol
+
+Flags:
+  -h, --help   help for token
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+
+Use "bhcli query token [command] --help" for more information about a command.
+```
+
+#### Retrieve a token information specified by symbol
+```
+$docker-compose run bhcli query token token -h
+token symbol
+
+Usage:
+  bhcli query token token [symbol] [flags]
+
+Flags:
+  -h, --help          help for token
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+
+#### Retrieve all supported tokens name 
+```
+$docker-compose run bhcli query token tokens -h
+tokens
+
+Usage:
+  bhcli query token tokens [flags]
+
+Flags:
+  -h, --help          help for tokens
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+#### Retrieve a token's decimal specified by symbol
+```
+$docker-compose run bhcli query token decimal -h
+decimal symbol
+
+Usage:
+  bhcli query token decimal [symbol] [flags]
+
+Flags:
+  -h, --help          help for decimal
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+
+#### Retrieve all exteranl address specified by symbol and address type 
+```
+$docker-compose run bhcli query address addresses -h
+addresses symbol address_type
+
+Usage:
+  bhcli query address addresses [symbol] [address_type] [flags]
+
+Flags:
+  -h, --help          help for addresses
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+
+#### Retrieve an address's asset specified by symbol, and address type
+```
+$docker-compose run bhcli query address address_asset -h
+address_asset symbol address_type address
+
+Usage:
+  bhcli query address address_asset [symbol] [address_type] [address] [flags]
+
+Flags:
+  -h, --help          help for address_asset
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+#### List all distribution query commands 
+```
+$docker-compose run bhcli query distr -h
+Querying commands for the distribution module
+
+Usage:
+  bhcli query distr [command]
+
+Available Commands:
+  params                        Query distribution params
+  validator-outstanding-rewards Query distribution outstanding (un-withdrawn) rewards for a validator and all their delegations
+  commission                    Query distribution validator commission
+  slashes                       Query distribution validator slashes
+  rewards                       Query all distribution delegator rewards or rewards from a particular validator
+  community-pool                Query the amount of coins in the community pool
+
+Flags:
+  -h, --help   help for distr
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+
+#### Retrieve distribution's parameters 
+```
+$docker-compose run bhcli query distr params -h
+Query distribution params
+
+Usage:
+  bhcli query distr params [flags]
+
+Flags:
+  -h, --help          help for params
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+
+#### Retrieve a validtor un-withdrawn rewards for itself and it's delegators 
+```
+$docker-compose run bhcli query distr validator-outstanding-rewards -h
+Query distribution outstanding (un-withdrawn) rewards for a validator and all their delegations
+
+Usage:
+  bhcli query distr validator-outstanding-rewards [] [flags]
+
+Flags:
+  -h, --help          help for validator-outstanding-rewards
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+#### Retrieve a validator's commission 
+```
+$docker-compose run bhcli query distr commission -h
+Query validator commission rewards from delegators to that validator:
+
+$ gaiacli query distr commission cosmosvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj
+
+Usage:
+  bhcli query distr commission [validator] [flags]
+
+Flags:
+  -h, --help          help for commission
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+#### Search the slash records between specified start and end height 
+```
+$docker-compose run bhcli query distr slashes -h
+Query all slashes of a validator for a given block range:
+
+$ gaiacli query distr slashes cosmosvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj 0 100
+
+Usage:
+  bhcli query distr slashes [validator] [start-height] [end-height] [flags]
+
+Flags:
+  -h, --help          help for slashes
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+#### Query all rewads earned by a delegator, or rewards from specified validtor 
+```
+$docker-compose run bhcli query distr rewards -h
+Query all rewards earned by a delegator, optionally restrict to rewards from a single validator:
+
+$ gaiacli query distr rewards cosmos1gghjut3ccd8ay0zduzj64hwre2fxs9ld75ru9p
+$ gaiacli query distr rewards cosmos1gghjut3ccd8ay0zduzj64hwre2fxs9ld75ru9p cosmosvaloper1gghjut3ccd8ay0zduzj64hwre2fxs9ldmqhffj
+
+Usage:
+  bhcli query distr rewards [delegator-addr] [<validator-addr>] [flags]
+
+Flags:
+  -h, --help          help for rewards
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
+#### Query all coins int he community poll
+```
+$docker-compose run bhcli query distr community-pool -h
+Query all coins in the community pool which is under Governance control.
+
+$ gaiacli query distr community-pool
+
+Usage:
+  bhcli query distr community-pool [flags]
+
+Flags:
+  -h, --help          help for community-pool
+      --indent        Add indent to JSON response
+      --ledger        Use a connected Ledger device
+      --node string   <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
+      --trust-node    Trust connected full node (don't verify proofs for responses)
+
+Global Flags:
+      --chain-id string   Chain ID of tendermint node
+  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
+      --home string       directory for config and data (default "/Users/rogan/.bhcli")
+  -o, --output string     Output format (text|json) (default "text")
+      --trace             print out full stack trace on errors
+```
 
