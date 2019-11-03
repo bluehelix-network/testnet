@@ -1371,7 +1371,7 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### Search a transaction by a specified hash
+#### Search a transaction by hash
 ```
 $docker-compose run bhcli query tx -h
 Find a transaction by hash in a committed block.
@@ -1392,7 +1392,7 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### List custodianunit query commands 
+#### List all custodianunit query commands 
 ```
 $docker-compose run bhcli query cu -h
 Querying commands for the custodianunit module
@@ -1420,7 +1420,7 @@ Global Flags:
 Use "bhcli query cu [command] --help" for more information about a command.
 ```
 
-#### Query a specified custodianunit infomation
+#### Query a custodianunit infomation
 ```
 $docker-compose run bhcli query cu info -h
 Query custodian unit info
@@ -1466,7 +1466,7 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### Query a custodianuint's asset specified by symbol
+#### Query a custodianuint's asset by symbol
 ```
 $docker-compose run bhcli query cu asset -h
 Query asset info of a custodian unit
@@ -1512,7 +1512,7 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### Query a custodianuint's order by specified order id
+#### Query a custodianuint's order by order id
 ```
 $docker-compose run bhcli query cu order -h
 Query custodianuint order by ID
@@ -1561,7 +1561,7 @@ Global Flags:
 Use "bhcli query token [command] --help" for more information about a command.
 ```
 
-#### Retrieve a token information specified by symbol
+#### Retrieve a token information by symbol
 ```
 $docker-compose run bhcli query token token -h
 token symbol
@@ -1606,7 +1606,7 @@ Global Flags:
   -o, --output string     Output format (text|json) (default "text")
       --trace             print out full stack trace on errors
 ```
-#### Retrieve a token's decimal specified by symbol
+#### Retrieve a token's decimal by symbol
 ```
 $docker-compose run bhcli query token decimal -h
 decimal symbol
@@ -1629,7 +1629,7 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### Retrieve all exteranl address specified by symbol and address type 
+#### Retrieve all exteranl address by symbol and address type 
 ```
 $docker-compose run bhcli query address addresses -h
 addresses symbol address_type
@@ -1652,7 +1652,7 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### Retrieve an address's asset specified by symbol, and address type
+#### Retrieve an address's asset specified  symbol and address type
 ```
 $docker-compose run bhcli query address address_asset -h
 address_asset symbol address_type address
@@ -1770,7 +1770,7 @@ Global Flags:
   -o, --output string     Output format (text|json) (default "text")
       --trace             print out full stack trace on errors
 ```
-#### Search the slash records between specified start and end height 
+#### Search the slash records between given block range 
 ```
 $docker-compose run bhcli query distr slashes -h
 Query all slashes of a validator for a given block range:
@@ -1819,7 +1819,7 @@ Global Flags:
   -o, --output string     Output format (text|json) (default "text")
       --trace             print out full stack trace on errors
 ```
-#### Query all coins int he community poll
+#### Query all coins in the community pool
 ```
 $docker-compose run bhcli query distr community-pool -h
 Query all coins in the community pool which is under Governance control.
