@@ -50,10 +50,9 @@ $ docker-compose run bhcli [command] --help
 
 ## Local keystore and custodian unit information
 
-### Subcommand `keys` getting help
+### Keystore management
 
-The subcommand `keys` allows you to manage your local keystore for tendermint.
-For keys detail preview, just run:
+The subcommand `keys` allows you to manage your local keystore. To get help, just run:
 
 ```console
 $ docker-compose run bhcli keys -h
@@ -88,7 +87,7 @@ Global Flags:
 Use "bhcli keys [command] --help" for more information about a command.
 
 ```
-### Create a bip39 mnemonic
+#### Create a bip39 mnemonic
 
 Mnemonic can easily restore your private key.
 
@@ -112,7 +111,7 @@ Global Flags:
 
 ```
 
-### Create a new private key
+#### Create a new private key
 
 ```console
 $ docker-compose run bhcli keys add -h
@@ -160,9 +159,21 @@ Global Flags:
 
 ```
 
-### List all keys 
+Example
 
-Subcommand `list` can list all public keys
+```console
+$ docker-compose run bhcli keys add alice
+Enter a passphrase to encrypt your key to disk:
+Repeat the passphrase:
+NAME:	TYPE:	ADDRESS:				PUBKEY:
+alice	local	cosmos1j52w984y2454lsllk3g9s90hud9gn8crlur5cp	cosmospub1addwnpepqvu7jx79skgyr9ma4zgtdwhd8sklau646sqsruekf7l2fug0eqs0zaagmrp
+```
+
+Please ignore the output address and pubkey as we are using cosmos-sdk to manage keystore. Insterad, we can run command `cu show` to get Bluehelix Chain custodian unit address.
+
+#### List all keys 
+
+Subcommand `list` can list all public keys. Note that this command only list cosmos addresses and pubkeys, to get custodian unit addresses, please refer to `cu list` command.
 
 ```console
 $ docker-compose run bhcli keys list -h
@@ -185,8 +196,9 @@ Global Flags:
 
 ```
 
-### show keyname info
-Subcommand `show` can show the designate keyname info, seem like the `list` subcommand.
+#### Show keyname info
+
+Subcommand `show` can show the designated keyname info, similiar the `list` subcommand. Note that this command only shows cosmos address and pubkey, to get custodian unit address, please refer to `cu show` command.
 
 ```console
 $ docker-compose run bhcli keys show bolen
@@ -199,7 +211,7 @@ bolen   local   cosmos1rknv9e5akqynqexexkp5juvrd3elv69hrdr2zr   cosmospub1addwnp
 
 ```
 
-### Delete the given key
+#### Delete the given key
 
 ```console
 $ docker-compose run bhcli keys delete -h
@@ -227,7 +239,7 @@ Global Flags:
 
 ```
 
-### Update the password of protecting private key
+#### Update the password of protecting private key
 
 ```console
 $ docker-compose run bhcli keys update -h
@@ -258,7 +270,9 @@ Password successfully updated!
 
 ```
 
-### Subcommand `cu` getting help
+### Local keystore custodian unit information
+
+The subcommand `cu` allows you to get information of custodian units from your local keystore. To get help, just run:
 
 ```console
 $ docker-compose run bhcli cu help
@@ -283,7 +297,7 @@ Global Flags:
 
 Use "bhcli cu [command] --help" for more information about a command.
 ```
-### CU list command
+#### List all local custodian units
 
 The subcommand `cu list` will list all cu accounts
 ```console
@@ -313,9 +327,9 @@ Custodian Unit Public Key for bolen: BHPubKey:bpJuCxZghLVMU4xsYEPwiKDFWC3HoL9scs
 
 ```
 
-### CU show command
+#### Show information of a local custodian unit
 
-The subcommand `cu show` will show designate cu account info
+The subcommand `cu show` will show designate custodian unit info
 
 ```console
 $ docker-compose run bhcli cu show -h
@@ -339,13 +353,9 @@ Global Flags:
 
 ```
 
-## Query chain states
-
-TBD
-
 ## Generate and broadcast transactions
 
-subcommand 'tx' can Generate and broadcast transactions.
+Subcommand 'tx' can generate and broadcast transactions.
 ```console
 $ docker-compose run bhcli tx -h
 Transactions subcommands
@@ -522,7 +532,9 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-### custodian unit 
+### Transactions for custodian units
+
+To get help, run the following command
 
 ```console
 $ docker-compose run bhcli tx cu -h
@@ -549,7 +561,8 @@ Global Flags:
 Use "bhcli tx cu [command] --help" for more information about a command.
 ```
 
-#### custodian unit keygen
+#### Generate a deposit address for a custodian unit
+
 ```console
 $ docker-compose run bhcli tx cu keygen -h
  Example: keygen BHBTC BHPSfYjrgEgM97gpCWRd2UStvRVRqFgw6mQ
@@ -585,221 +598,10 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### custodian unit keygenfinish
-```concole
-$ docker-compose run bhcli tx cu keygenfinish -h
-Example: 
-  keygenfinish 1 BHPSfYjrgEgM97gpCWRd2UStvRVRqFgw6mQ  mhoGjKn5xegDXL6u5LFSUQdm5ozdM6xao9 BHPSfYjrgEgM97gpCWRd2UStvRVRqFgw6mQ
-        BHVw8uKtTFJRR7Xw2L98pQkmtEBM4btWhTB
+### Transactions for assets
 
-Usage:
-  bhcli tx cu keygenfinish [order-id] [order_from] [address] []key_nodes [flags]
+To get help, run the following command
 
-Flags:
-  -a, --account-number uint     The account number of the signing account (offline mode only)
-  -b, --broadcast-mode string   Transaction broadcasting mode (sync|async|block) (default "sync")
-      --dry-run                 ignore the --gas flag and perform a simulation of a transaction, but don't broadcast it
-      --fees string             Fees to pay along with transaction; eg: 10uatom
-      --from string             Name or address of private key with which to sign
-      --gas string              gas limit to set per-transaction; set to "auto" to calculate required gas automatically (default 200000) (default "200000")
-      --gas-adjustment float    adjustment factor to be multiplied against the estimate returned by the tx simulation; if the gas limit is set manually this flag is ignored  (default 1)
-      --gas-prices string       Gas prices to determine the transaction fee (e.g. 10uatom)
-      --generate-only           Build an unsigned transaction and write it to STDOUT (when enabled, the local Keybase is not accessible)
-  -h, --help                    help for keygenfinish
-      --indent                  Add indent to JSON response
-      --ledger                  Use a connected Ledger device
-      --memo string             Memo to send along with transaction
-      --node string             <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
-      --print-response          return tx response (only works with async = false) (default true)
-  -s, --sequence uint           The sequence number of the signing account (offline mode only)
-      --trust-node              Trust connected full node (don't verify proofs for responses) (default true)
-  -y, --yes                     Skip tx broadcasting prompt confirmation
-
-Global Flags:
-      --chain-id string   Chain ID of tendermint node
-  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
-      --home string       directory for config and data (default "/Users/admin/.bhcli")
-  -o, --output string     Output format (text|json) (default "text")
-      --trace             print out full stack trace on errors
-```
-
-#### custodian unit keygencancel
-```concole
-$ docker-compose run bhcli tx cu keygencancel -h
-
-Example:
-  key_gen_cancel order_id
-
-Usage:
-  bhcli tx cu keygencancel [order-id] [flags]
-
-Flags:
-  -a, --account-number uint     The account number of the signing account (offline mode only)
-  -b, --broadcast-mode string   Transaction broadcasting mode (sync|async|block) (default "sync")
-      --dry-run                 ignore the --gas flag and perform a simulation of a transaction, but don't broadcast it
-      --fees string             Fees to pay along with transaction; eg: 10uatom
-      --from string             Name or address of private key with which to sign
-      --gas string              gas limit to set per-transaction; set to "auto" to calculate required gas automatically (default 200000) (default "200000")
-      --gas-adjustment float    adjustment factor to be multiplied against the estimate returned by the tx simulation; if the gas limit is set manually this flag is ignored  (default 1)
-      --gas-prices string       Gas prices to determine the transaction fee (e.g. 10uatom)
-      --generate-only           Build an unsigned transaction and write it to STDOUT (when enabled, the local Keybase is not accessible)
-  -h, --help                    help for keygencancel
-      --indent                  Add indent to JSON response
-      --ledger                  Use a connected Ledger device
-      --memo string             Memo to send along with transaction
-      --node string             <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
-      --print-response          return tx response (only works with async = false) (default true)
-  -s, --sequence uint           The sequence number of the signing account (offline mode only)
-      --trust-node              Trust connected full node (don't verify proofs for responses) (default true)
-  -y, --yes                     Skip tx broadcasting prompt confirmation
-
-Global Flags:
-      --chain-id string   Chain ID of tendermint node
-  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
-      --home string       directory for config and data (default "/Users/admin/.bhcli")
-  -o, --output string     Output format (text|json) (default "text")
-      --trace             print out full stack trace on errors
-```
-
-### token transaction subcommands
-```console
-$ docker-compose run bhcli tx token -h
-token transaction subcommands
-
-Usage:
-  bhcli tx token [command]
-
-Available Commands:
-  token-keygen       token-keygen
-  token-keygenfinish token-keygenfinish
-  token-keygencancel token-keygencancel
-
-Flags:
-  -h, --help   help for token
-
-Global Flags:
-      --chain-id string   Chain ID of tendermint node
-  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
-      --home string       directory for config and data (default "/Users/admin/.bhcli")
-  -o, --output string     Output format (text|json) (default "text")
-      --trace             print out full stack trace on errors
-
-Use "bhcli tx token [command] --help" for more information about a command.
-```
-
-#### token token-keygen
-```console
-$ docker-compose run bhcli tx token token-keygen -h
-
-		Example: token-keygen symbol address_type
-
-Usage:
-  bhcli tx token token-keygen [flags]
-
-Flags:
-  -a, --account-number uint     The account number of the signing account (offline mode only)
-  -b, --broadcast-mode string   Transaction broadcasting mode (sync|async|block) (default "sync")
-      --dry-run                 ignore the --gas flag and perform a simulation of a transaction, but don't broadcast it
-      --fees string             Fees to pay along with transaction; eg: 10uatom
-      --from string             Name or address of private key with which to sign
-      --gas string              gas limit to set per-transaction; set to "auto" to calculate required gas automatically (default 200000) (default "200000")
-      --gas-adjustment float    adjustment factor to be multiplied against the estimate returned by the tx simulation; if the gas limit is set manually this flag is ignored  (default 1)
-      --gas-prices string       Gas prices to determine the transaction fee (e.g. 10uatom)
-      --generate-only           Build an unsigned transaction and write it to STDOUT (when enabled, the local Keybase is not accessible)
-  -h, --help                    help for token-keygen
-      --indent                  Add indent to JSON response
-      --ledger                  Use a connected Ledger device
-      --memo string             Memo to send along with transaction
-      --node string             <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
-      --print-response          return tx response (only works with async = false) (default true)
-  -s, --sequence uint           The sequence number of the signing account (offline mode only)
-      --trust-node              Trust connected full node (don't verify proofs for responses) (default true)
-  -y, --yes                     Skip tx broadcasting prompt confirmation
-
-Global Flags:
-      --chain-id string   Chain ID of tendermint node
-  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
-      --home string       directory for config and data (default "/Users/admin/.bhcli")
-  -o, --output string     Output format (text|json) (default "text")
-      --trace             print out full stack trace on errors
-
-```
-
-#### token token-keygenfinish
-```console
-$ docker-compose run bhcli tx token token-keygenfinish -h
-
-		Example: token-keygenfinish order_id to address []key_nodes
-
-Usage:
-  bhcli tx token token-keygenfinish [flags]
-
-Flags:
-  -a, --account-number uint     The account number of the signing account (offline mode only)
-  -b, --broadcast-mode string   Transaction broadcasting mode (sync|async|block) (default "sync")
-      --dry-run                 ignore the --gas flag and perform a simulation of a transaction, but don't broadcast it
-      --fees string             Fees to pay along with transaction; eg: 10uatom
-      --from string             Name or address of private key with which to sign
-      --gas string              gas limit to set per-transaction; set to "auto" to calculate required gas automatically (default 200000) (default "200000")
-      --gas-adjustment float    adjustment factor to be multiplied against the estimate returned by the tx simulation; if the gas limit is set manually this flag is ignored  (default 1)
-      --gas-prices string       Gas prices to determine the transaction fee (e.g. 10uatom)
-      --generate-only           Build an unsigned transaction and write it to STDOUT (when enabled, the local Keybase is not accessible)
-  -h, --help                    help for token-keygenfinish
-      --indent                  Add indent to JSON response
-      --ledger                  Use a connected Ledger device
-      --memo string             Memo to send along with transaction
-      --node string             <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
-      --print-response          return tx response (only works with async = false) (default true)
-  -s, --sequence uint           The sequence number of the signing account (offline mode only)
-      --trust-node              Trust connected full node (don't verify proofs for responses) (default true)
-  -y, --yes                     Skip tx broadcasting prompt confirmation
-
-Global Flags:
-      --chain-id string   Chain ID of tendermint node
-  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
-      --home string       directory for config and data (default "/Users/admin/.bhcli")
-  -o, --output string     Output format (text|json) (default "text")
-      --trace             print out full stack trace on errors
-```
-
-#### token token-keygencancel
-```console
-$ docker-compose run bhcli tx token token-keygencancel -h
-
-		Example: token-keygencancel order_id
-
-Usage:
-  bhcli tx token token-keygencancel [flags]
-
-Flags:
-  -a, --account-number uint     The account number of the signing account (offline mode only)
-  -b, --broadcast-mode string   Transaction broadcasting mode (sync|async|block) (default "sync")
-      --dry-run                 ignore the --gas flag and perform a simulation of a transaction, but don't broadcast it
-      --fees string             Fees to pay along with transaction; eg: 10uatom
-      --from string             Name or address of private key with which to sign
-      --gas string              gas limit to set per-transaction; set to "auto" to calculate required gas automatically (default 200000) (default "200000")
-      --gas-adjustment float    adjustment factor to be multiplied against the estimate returned by the tx simulation; if the gas limit is set manually this flag is ignored  (default 1)
-      --gas-prices string       Gas prices to determine the transaction fee (e.g. 10uatom)
-      --generate-only           Build an unsigned transaction and write it to STDOUT (when enabled, the local Keybase is not accessible)
-  -h, --help                    help for token-keygencancel
-      --indent                  Add indent to JSON response
-      --ledger                  Use a connected Ledger device
-      --memo string             Memo to send along with transaction
-      --node string             <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
-      --print-response          return tx response (only works with async = false) (default true)
-  -s, --sequence uint           The sequence number of the signing account (offline mode only)
-      --trust-node              Trust connected full node (don't verify proofs for responses) (default true)
-  -y, --yes                     Skip tx broadcasting prompt confirmation
-
-Global Flags:
-      --chain-id string   Chain ID of tendermint node
-  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
-      --home string       directory for config and data (default "/Users/admin/.bhcli")
-  -o, --output string     Output format (text|json) (default "text")
-      --trace             print out full stack trace on errors
-```
-
-### asset
 ```console
 bhcli tx asset  -h
 tx subcommands
@@ -829,7 +631,8 @@ Global Flags:
 Use "bhcli tx asset [command] --help" for more information about a command.
 ```
 
-#### asset deposit
+#### Deposit an asset
+
 ```concole
 $ docker-compose run bhcli tx asset deposit -h
   Deposit asset to BHEX Chain, and BHEX Chain will check it through the real chain.
@@ -866,7 +669,8 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### asset collect-start
+#### Start collecting an asset to a toekn withdrawal address
+
 ```console
 $ docker-compose run bhcli tx asset collect-start -h
   collect-start to sign tx for collect asset from sepecified address to withdrawal address
@@ -903,7 +707,8 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### asset collect-finish
+#### Finish collecting an asset
+
 ```console
 $ docker-compose run bhcli tx asset collect-finish -h
   collect-finish collect asset, the unspent transaction fee will be return.
@@ -940,44 +745,8 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### asset collect-cancel
-```console
-$ docker-compose run bhcli tx asset collect-cancel -h
-  collect-cancel collect asset, the collect order will be canceled.
-  Example: bhcli tx asset collect-cancel  --from alice  --chain-id bhexchain 2235
+#### Start withdrawal of an asset from a token withdrawal address
 
-Usage:
-  bhcli tx asset collect-cancel [orderID] [flags]
-
-Flags:
-  -a, --account-number uint     The account number of the signing account (offline mode only)
-  -b, --broadcast-mode string   Transaction broadcasting mode (sync|async|block) (default "sync")
-      --dry-run                 ignore the --gas flag and perform a simulation of a transaction, but don't broadcast it
-      --fees string             Fees to pay along with transaction; eg: 10uatom
-      --from string             Name or address of private key with which to sign
-      --gas string              gas limit to set per-transaction; set to "auto" to calculate required gas automatically (default 200000) (default "200000")
-      --gas-adjustment float    adjustment factor to be multiplied against the estimate returned by the tx simulation; if the gas limit is set manually this flag is ignored  (default 1)
-      --gas-prices string       Gas prices to determine the transaction fee (e.g. 10uatom)
-      --generate-only           Build an unsigned transaction and write it to STDOUT (when enabled, the local Keybase is not accessible)
-  -h, --help                    help for collect-cancel
-      --indent                  Add indent to JSON response
-      --ledger                  Use a connected Ledger device
-      --memo string             Memo to send along with transaction
-      --node string             <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
-      --print-response          return tx response (only works with async = false) (default true)
-  -s, --sequence uint           The sequence number of the signing account (offline mode only)
-      --trust-node              Trust connected full node (don't verify proofs for responses) (default true)
-  -y, --yes                     Skip tx broadcasting prompt confirmation
-
-Global Flags:
-      --chain-id string   Chain ID of tendermint node
-  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
-      --home string       directory for config and data (default "/Users/admin/.bhcli")
-  -o, --output string     Output format (text|json) (default "text")
-      --trace             print out full stack trace on errors
-```
-
-#### asset withdrawal-start
 ```console
 bhcli tx asset withdrawal-start -h
   withdrawal-start to sign tx for withdrawal asset from sepecified address to withdrawal address
@@ -1014,7 +783,8 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### asset withdrawal-finish
+#### Finish withdrawal of an asset
+
 ```console
 $ docker-compose run bhcli tx asset withdrawal-finish -h
   withdrawal-finish withdrawal asset, the unspent transaction fee will be return.
@@ -1088,7 +858,8 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-### Create and sign a send tx
+### Send an asset to another custodian unit
+
 ```console
 $ docker-compose run bhcli tx send  -h
 Create and sign a send tx
@@ -1124,146 +895,10 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-### Distribution transactions
-```console
-$ docker-compose run bhcli tx distr -h
-Distribution transactions subcommands
+## Query chain states
 
-Usage:
-  bhcli tx distr [command]
+To get help, run the following commands
 
-Available Commands:
-  withdraw-rewards     withdraw rewards from validator-addr to delegator designated address(set by set-withdraw-addr), and optionally withdraw validator's commission if delegator is a validator operator
-  set-withdraw-addr    set withdraw-addr on behalf of delegator
-  withdraw-all-rewards withdraw all delegations rewards for a delegator
-
-Flags:
-  -h, --help   help for distr
-
-Global Flags:
-      --chain-id string   Chain ID of tendermint node
-  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
-      --home string       directory for config and data (default "/Users/admin/.bhcli")
-  -o, --output string     Output format (text|json) (default "text")
-      --trace             print out full stack trace on errors
-
-Use "bhcli tx distr [command] --help" for more information about a command.
-```
-
-#### Distribution withdraw-rewards
-```console
-$ docker-compose run bhcli tx distr withdraw-rewards -h
-witdraw rewards from validator-addr to delegator address, and optionally withdraw validator's commission also if delegator is a validator operator:
-		$ bhcli tx distr withdraw-rewards BHfeAYhzf54jNp7vWmvVapgjgsoEr8P2spF --from jack
-		$ bhcli tx distr withdraw-rewards BHfeAYhzf54jNp7vWmvVapgjgsoEr8P2spF --from alice --commission  //if alice is a  val operator
-
-Usage:
-  bhcli tx distr withdraw-rewards [validator-addr] [flags]
-
-Flags:
-  -a, --account-number uint     The account number of the signing account (offline mode only)
-  -b, --broadcast-mode string   Transaction broadcasting mode (sync|async|block) (default "sync")
-      --commission              also withdraw validator's commission
-      --dry-run                 ignore the --gas flag and perform a simulation of a transaction, but don't broadcast it
-      --fees string             Fees to pay along with transaction; eg: 10uatom
-      --from string             Name or address of private key with which to sign
-      --gas string              gas limit to set per-transaction; set to "auto" to calculate required gas automatically (default 200000) (default "200000")
-      --gas-adjustment float    adjustment factor to be multiplied against the estimate returned by the tx simulation; if the gas limit is set manually this flag is ignored  (default 1)
-      --gas-prices string       Gas prices to determine the transaction fee (e.g. 10uatom)
-      --generate-only           Build an unsigned transaction and write it to STDOUT (when enabled, the local Keybase is not accessible)
-  -h, --help                    help for withdraw-rewards
-      --indent                  Add indent to JSON response
-      --ledger                  Use a connected Ledger device
-      --memo string             Memo to send along with transaction
-      --node string             <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
-      --print-response          return tx response (only works with async = false) (default true)
-  -s, --sequence uint           The sequence number of the signing account (offline mode only)
-      --trust-node              Trust connected full node (don't verify proofs for responses) (default true)
-  -y, --yes                     Skip tx broadcasting prompt confirmation
-
-Global Flags:
-      --chain-id string   Chain ID of tendermint node
-  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
-      --home string       directory for config and data (default "/Users/admin/.bhcli")
-  -o, --output string     Output format (text|json) (default "text")
-      --trace             print out full stack trace on errors
-```
-
-#### Distribution set-withdraw-addr
-```console
-$ docker-compose run bhcli tx distr set-withdraw-addr -h
-set withdraw-addr on behalf of delegator, default  withdrawal addr = delegator address:
-		$ bhcli tx set-withdraw-addr BHZHjUFBF3sgx2kpWEjsMGgGMSJRzohb8aa --from alice
-
-Usage:
-  bhcli tx distr set-withdraw-addr [withdraw-addr] [flags]
-
-Flags:
-  -a, --account-number uint     The account number of the signing account (offline mode only)
-  -b, --broadcast-mode string   Transaction broadcasting mode (sync|async|block) (default "sync")
-      --dry-run                 ignore the --gas flag and perform a simulation of a transaction, but don't broadcast it
-      --fees string             Fees to pay along with transaction; eg: 10uatom
-      --from string             Name or address of private key with which to sign
-      --gas string              gas limit to set per-transaction; set to "auto" to calculate required gas automatically (default 200000) (default "200000")
-      --gas-adjustment float    adjustment factor to be multiplied against the estimate returned by the tx simulation; if the gas limit is set manually this flag is ignored  (default 1)
-      --gas-prices string       Gas prices to determine the transaction fee (e.g. 10uatom)
-      --generate-only           Build an unsigned transaction and write it to STDOUT (when enabled, the local Keybase is not accessible)
-  -h, --help                    help for set-withdraw-addr
-      --indent                  Add indent to JSON response
-      --ledger                  Use a connected Ledger device
-      --memo string             Memo to send along with transaction
-      --node string             <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
-      --print-response          return tx response (only works with async = false) (default true)
-  -s, --sequence uint           The sequence number of the signing account (offline mode only)
-      --trust-node              Trust connected full node (don't verify proofs for responses) (default true)
-  -y, --yes                     Skip tx broadcasting prompt confirmation
-
-Global Flags:
-      --chain-id string   Chain ID of tendermint node
-  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
-      --home string       directory for config and data (default "/Users/admin/.bhcli")
-  -o, --output string     Output format (text|json) (default "text")
-      --trace             print out full stack trace on errors
-```
-
-#### Distribution withdraw-all-rewards
-```console
-$ docker-compose run bhcli tx distr withdraw-all-rewards -h
-Withdraw all rewards for a single delegator:
-		$ bhcli tx distr withdraw-all-rewards --from alice
-
-Usage:
-  bhcli tx distr withdraw-all-rewards [flags]
-
-Flags:
-  -a, --account-number uint     The account number of the signing account (offline mode only)
-  -b, --broadcast-mode string   Transaction broadcasting mode (sync|async|block) (default "sync")
-      --dry-run                 ignore the --gas flag and perform a simulation of a transaction, but don't broadcast it
-      --fees string             Fees to pay along with transaction; eg: 10uatom
-      --from string             Name or address of private key with which to sign
-      --gas string              gas limit to set per-transaction; set to "auto" to calculate required gas automatically (default 200000) (default "200000")
-      --gas-adjustment float    adjustment factor to be multiplied against the estimate returned by the tx simulation; if the gas limit is set manually this flag is ignored  (default 1)
-      --gas-prices string       Gas prices to determine the transaction fee (e.g. 10uatom)
-      --generate-only           Build an unsigned transaction and write it to STDOUT (when enabled, the local Keybase is not accessible)
-  -h, --help                    help for withdraw-all-rewards
-      --indent                  Add indent to JSON response
-      --ledger                  Use a connected Ledger device
-      --max-msgs int            Limit the number of messages per tx (0 for unlimited) (default 5)
-      --memo string             Memo to send along with transaction
-      --node string             <host>:<port> to tendermint rpc interface for this chain (default "tcp://localhost:26657")
-      --print-response          return tx response (only works with async = false) (default true)
-  -s, --sequence uint           The sequence number of the signing account (offline mode only)
-      --trust-node              Trust connected full node (don't verify proofs for responses) (default true)
-  -y, --yes                     Skip tx broadcasting prompt confirmation
-
-Global Flags:
-      --chain-id string   Chain ID of tendermint node
-  -e, --encoding string   Binary encoding (hex|b64|btc) (default "hex")
-      --home string       directory for config and data (default "/Users/admin/.bhcli")
-  -o, --output string     Output format (text|json) (default "text")
-      --trace             print out full stack trace on errors
-```
-#### List all querier commands
 ```
 $docker-compose run bhcli query -h
 Querying subcommands
@@ -1302,7 +937,7 @@ Additional help topics:
 Use "bhcli query [command] --help" for more information about a command.
 ```
 
-#### Retrieve tendermint validator set at given height 
+### Retrieve tendermint validator set at given height
 ```
 $docker-compose run bhcli query tendermint-validator-set -h
 Get the full tendermint validator set at given height
@@ -1324,7 +959,7 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### Retrieve block contents at given height
+### Retrieve block contents at given height
 ```
 $docker-compose run bhcli query block -h
 Get verified data for a the block at given height
@@ -1344,7 +979,7 @@ Global Flags:
   -o, --output string     Output format (text|json) (default "text")
       --trace             print out full stack trace on errors
 ```
-#### Search for transaction that match the specified tags 
+### Search for transaction that match the specified tags 
 ```
 $docker-compose run bhcli query txs -h
 Search for transactions that match the exact given tags where results are paginated.
@@ -1371,7 +1006,7 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### Search a transaction by hash
+### Search a transaction by hash
 ```
 $docker-compose run bhcli query tx -h
 Find a transaction by hash in a committed block.
@@ -1392,7 +1027,8 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### List all custodianunit query commands 
+### Custodian unit query commands
+
 ```
 $docker-compose run bhcli query cu -h
 Querying commands for the custodianunit module
@@ -1420,7 +1056,7 @@ Global Flags:
 Use "bhcli query cu [command] --help" for more information about a command.
 ```
 
-#### Query a custodianunit infomation
+#### Query a custodian unit infomation
 ```
 $docker-compose run bhcli query cu info -h
 Query custodian unit info
@@ -1443,7 +1079,7 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### Query a custodianuint's all assets 
+#### Query all assets of a custodian unit 
 ```
 $docker-compose run bhcli query cu assets -h
 Query assets info of a custodian unit
@@ -1466,7 +1102,7 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### Query a custodianuint's asset by symbol
+#### Query an asset of a custodian unit by symbol
 ```
 $docker-compose run bhcli query cu asset -h
 Query asset info of a custodian unit
@@ -1489,7 +1125,7 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### Query a custodianuint's all orders
+#### Query all orders of a custodian unit
 ```
 $docker-compose run bhcli query cu orders -h
 Query custodianuint orders
@@ -1512,7 +1148,7 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### Query a custodianuint's order by order id
+#### Query an order of a custodian unit by order id
 ```
 $docker-compose run bhcli query cu order -h
 Query custodianuint order by ID
@@ -1535,7 +1171,7 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### List all token query commands 
+### Token query commands
 ```
 $docker-compose run bhcli query token -h
 Querying commands for the token module
@@ -1652,7 +1288,7 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-#### Retrieve an address's asset specified  symbol and address type
+#### Retrieve an address's asset specified symbol and address type
 ```
 $docker-compose run bhcli query address address_asset -h
 address_asset symbol address_type address
