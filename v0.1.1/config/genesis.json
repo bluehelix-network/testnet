@@ -1,0 +1,515 @@
+{
+  "genesis_time": "2020-03-12T01:37:21.276662Z",
+  "chain_id": "bhchain-testnet",
+  "consensus_params": {
+    "block": {
+      "max_bytes": "22020096",
+      "max_gas": "-1",
+      "time_iota_ms": "1000"
+    },
+    "evidence": {
+      "max_age": "100000"
+    },
+    "validator": {
+      "pub_key_types": [
+        "ed25519"
+      ]
+    }
+  },
+  "app_hash": "",
+  "app_state": {
+    "token": {
+      "genesis_token_info": [
+        {
+          "symbol": "bht",
+          "token_info": {
+            "symbol": "bht",
+            "issuer": "",
+            "chain": "bht",
+            "type": "2",
+            "is_send_enabled": true,
+            "is_deposit_enabled": false,
+            "is_withdrawal_enabled": false,
+            "decimals": "18",
+            "total_supply": "0",
+            "collect_threshold": "0",
+            "deposit_threshold": "0",
+            "open_fee": "1000000000000000000",
+            "sys_open_fee": "10000000000000000000",
+            "withdrawal_fee": "0",
+            "max_op_cu_number": "3",
+            "systransfer_amount": "0",
+            "op_cu_systransfer_amount": "0",
+            "gas_limit": "1000000",
+            "gas_price": "1"
+          }
+        },
+        {
+          "symbol": "btc",
+          "token_info": {
+            "symbol": "btc",
+            "issuer": "",
+            "chain": "btc",
+            "type": "1",
+            "is_send_enabled": true,
+            "is_deposit_enabled": true,
+            "is_withdrawal_enabled": true,
+            "decimals": "8",
+            "total_supply": "21000000000000000",
+            "collect_threshold": "20000",
+            "deposit_threshold": "2000",
+            "open_fee": "28000000000000000000",
+            "sys_open_fee": "28000000000000000000",
+            "withdrawal_fee": "1000",
+            "max_op_cu_number": "10",
+            "systransfer_amount": "3000",
+            "op_cu_systransfer_amount": "10000",
+            "gas_limit": "1",
+            "gas_price": "1000"
+          }
+        },
+        {
+          "symbol": "eth",
+          "token_info": {
+            "symbol": "eth",
+            "issuer": "",
+            "chain": "eth",
+            "type": "2",
+            "is_send_enabled": true,
+            "is_deposit_enabled": true,
+            "is_withdrawal_enabled": true,
+            "decimals": "18",
+            "total_supply": "0",
+            "collect_threshold": "20000000000000000",
+            "deposit_threshold": "2000000000000000",
+            "open_fee": "28000000000000000000",
+            "sys_open_fee": "28000000000000000000",
+            "withdrawal_fee": "1000000000000000",
+            "max_op_cu_number": "10",
+            "systransfer_amount": "30000000000000000",
+            "op_cu_systransfer_amount": "1000000000000000000",
+            "gas_limit": "21000",
+            "gas_price": "1000"
+          }
+        },
+        {
+          "symbol": "tusdt",
+          "token_info": {
+            "symbol": "tusdt",
+            "issuer": "0xC9476A4919a7E5c7e1760b68F945971769D5c1D8",
+            "chain": "eth",
+            "type": "2",
+            "is_send_enabled": true,
+            "is_deposit_enabled": true,
+            "is_withdrawal_enabled": true,
+            "decimals": "6",
+            "total_supply": "30000000000000000",
+            "collect_threshold": "200000000",
+            "deposit_threshold": "200000000",
+            "open_fee": "28000000000000000000",
+            "sys_open_fee": "28000000000000000000",
+            "withdrawal_fee": "8000000000000000",
+            "max_op_cu_number": "10",
+            "systransfer_amount": "800000000000000",
+            "op_cu_systransfer_amount": "100000000000000000",
+            "gas_limit": "80000",
+            "gas_price": "1000"
+          }
+        }
+      ],
+      "params": {
+        "token_cache_size": "32",
+        "open_token_fee": "10000"
+      }
+    },
+    "order": {},
+    "transfer": {
+      "send_enabled": true
+    },
+    "distribution": {
+      "fee_pool": {
+        "community_pool": []
+      },
+      "community_tax": "0.020000000000000000",
+      "base_proposer_reward": "0.010000000000000000",
+      "bonus_proposer_reward": "0.040000000000000000",
+      "withdraw_addr_enabled": true,
+      "delegator_withdraw_infos": [],
+      "previous_proposer": "",
+      "outstanding_rewards": [],
+      "validator_accumulated_commissions": [],
+      "validator_historical_rewards": [],
+      "validator_current_rewards": [],
+      "delegator_starting_infos": [],
+      "validator_slash_events": []
+    },
+    "supply": {
+      "supply": []
+    },
+    "keygen": {},
+    "accounts": [
+      {
+        "cu_type": "0",
+        "public_key": null,
+        "coins_hold": [],
+        "assets": null,
+        "asset_coins": [],
+        "asset_coins_hold": [],
+        "disable_send_tx": null,
+        "asset_pubkey": null,
+        "gas_used": [],
+        "gas_received": [],
+        "address": "BHXPKUUtfdf3LfKv4BPFkcFxumxyATDkQzL",
+        "coins": [
+          {
+            "denom": "bht",
+            "amount": "500000000000000000000000000"
+          }
+        ],
+        "sequence_number": "0",
+        "cu_number": "0",
+        "module_name": "",
+        "module_permissions": null
+      },
+      {
+        "cu_type": "0",
+        "public_key": null,
+        "coins_hold": [],
+        "assets": null,
+        "asset_coins": [],
+        "asset_coins_hold": [],
+        "disable_send_tx": null,
+        "asset_pubkey": null,
+        "gas_used": [],
+        "gas_received": [],
+        "address": "BHhYuyVsTznpDF2kzfaZivFV8mjgC1g5JNa",
+        "coins": [
+          {
+            "denom": "bht",
+            "amount": "500000000000000000000000000"
+          }
+        ],
+        "sequence_number": "0",
+        "cu_number": "0",
+        "module_name": "",
+        "module_permissions": null
+      },
+      {
+        "cu_type": "0",
+        "public_key": null,
+        "coins_hold": [],
+        "assets": null,
+        "asset_coins": [],
+        "asset_coins_hold": [],
+        "disable_send_tx": null,
+        "asset_pubkey": null,
+        "gas_used": [],
+        "gas_received": [],
+        "address": "BHLf9UUWobbcHSzC96su4n4Kj4Bun1DtjdB",
+        "coins": [
+          {
+            "denom": "bht",
+            "amount": "500000000000000000000000000"
+          }
+        ],
+        "sequence_number": "0",
+        "cu_number": "0",
+        "module_name": "",
+        "module_permissions": null
+      },
+      {
+        "cu_type": "0",
+        "public_key": null,
+        "coins_hold": [],
+        "assets": null,
+        "asset_coins": [],
+        "asset_coins_hold": [],
+        "disable_send_tx": null,
+        "asset_pubkey": null,
+        "gas_used": [],
+        "gas_received": [],
+        "address": "BHP843X5Lv9o5UsnkJ1Zomm8o8x2ZDNFmNN",
+        "coins": [
+          {
+            "denom": "bht",
+            "amount": "500000000000000000000000000"
+          }
+        ],
+        "sequence_number": "0",
+        "cu_number": "0",
+        "module_name": "",
+        "module_permissions": null
+      }
+    ],
+    "slashing": {
+      "params": {
+        "max_evidence_age": "120000000000",
+        "signed_blocks_window": "100",
+        "min_signed_per_window": "0.500000000000000000",
+        "downtime_jail_duration": "600000000000",
+        "slash_fraction_double_sign": "0.050000000000000000",
+        "slash_fraction_downtime": "0.010000000000000000"
+      },
+      "signing_infos": {},
+      "missed_blocks": {}
+    },
+    "cu": {
+      "custodianunits": [],
+      "params": {
+        "max_memo_characters": "256",
+        "tx_sig_limit": "7",
+        "tx_size_cost_per_byte": "10",
+        "sig_verify_cost_ed25519": "590",
+        "sig_verify_cost_secp256k1": "1000"
+      }
+    },
+    "genutil": {
+      "gentxs": [
+        {
+          "type": "bhchain/StdTx",
+          "value": {
+            "msg": [
+              {
+                "type": "bhchain/MsgCreateValidator",
+                "value": {
+                  "description": {
+                    "moniker": "node0",
+                    "identity": "",
+                    "website": "",
+                    "details": ""
+                  },
+                  "commission": {
+                    "rate": "0.000000000000000000",
+                    "max_rate": "0.000000000000000000",
+                    "max_change_rate": "0.000000000000000000"
+                  },
+                  "min_self_delegation": "5000000000000000000000000",
+                  "delegator_address": "BHXPKUUtfdf3LfKv4BPFkcFxumxyATDkQzL",
+                  "validator_address": "bhvaloper10cy8pqpw4uxy970drryzjrvap5ufv6e0y3nvqs",
+                  "pubkey": "bhvalconspub1zcjduepqk5vht9p4vg7x2lw2vnnmgumj5wp249qnnadkw9tq2vpuu88ys83qzf8lgv",
+                  "value": {
+                    "denom": "bht",
+                    "amount": "100000000000000000000000000"
+                  }
+                }
+              }
+            ],
+            "fee": {
+              "amount": [],
+              "gas": "0"
+            },
+            "signatures": [
+              {
+                "pub_key": {
+                  "type": "tendermint/PubKeySecp256k1",
+                  "value": "A+3JScVBgl+kNW2w9WIhIkGdWIjSD+/a1O+9/XQ5J26v"
+                },
+                "signature": "pTRgyeA32wSPY5SB9ocbw4n8/oQejOMJ4susLBqwp2YYPLBcZnQT/UyhE55qGY+/zWbVUFtqlPUQ1y18+svRhw=="
+              }
+            ],
+            "memo": "ab70f7cfac873891635e6d8c737a57498a0139d4@10.4.177.230:26656"
+          }
+        },
+        {
+          "type": "bhchain/StdTx",
+          "value": {
+            "msg": [
+              {
+                "type": "bhchain/MsgCreateValidator",
+                "value": {
+                  "description": {
+                    "moniker": "node1",
+                    "identity": "",
+                    "website": "",
+                    "details": ""
+                  },
+                  "commission": {
+                    "rate": "0.000000000000000000",
+                    "max_rate": "0.000000000000000000",
+                    "max_change_rate": "0.000000000000000000"
+                  },
+                  "min_self_delegation": "5000000000000000000000000",
+                  "delegator_address": "BHhYuyVsTznpDF2kzfaZivFV8mjgC1g5JNa",
+                  "validator_address": "bhvaloper1ak9rmpc4kd36wdj3crhsmw7w5xl0exmugac5ln",
+                  "pubkey": "bhvalconspub1zcjduepqjeqs40mac9kxuhz89v9js6yq55mn4hmxceyt5jzy04r2ucyeufrqzqdmng",
+                  "value": {
+                    "denom": "bht",
+                    "amount": "100000000000000000000000000"
+                  }
+                }
+              }
+            ],
+            "fee": {
+              "amount": [],
+              "gas": "0"
+            },
+            "signatures": [
+              {
+                "pub_key": {
+                  "type": "tendermint/PubKeySecp256k1",
+                  "value": "Alt+W1WVrP04HFCGdUhW3FsNjhGyhXm1vU/jgkmaP8Dj"
+                },
+                "signature": "lvJE90dv15GVi1kENRMSfjlhNS7s9mGpDB7VnoGHFLUnBO3C2cj6+jYaMCbpfHzmCI+65kB+MFtNyca1+ZvhTA=="
+              }
+            ],
+            "memo": "d2e61c351383b9db5355621cb1795f6a969585f9@10.4.177.140:26656"
+          }
+        },
+        {
+          "type": "bhchain/StdTx",
+          "value": {
+            "msg": [
+              {
+                "type": "bhchain/MsgCreateValidator",
+                "value": {
+                  "description": {
+                    "moniker": "node2",
+                    "identity": "",
+                    "website": "",
+                    "details": ""
+                  },
+                  "commission": {
+                    "rate": "0.000000000000000000",
+                    "max_rate": "0.000000000000000000",
+                    "max_change_rate": "0.000000000000000000"
+                  },
+                  "min_self_delegation": "5000000000000000000000000",
+                  "delegator_address": "BHLf9UUWobbcHSzC96su4n4Kj4Bun1DtjdB",
+                  "validator_address": "bhvaloper1ppw46yvel9x2qw2hvsj0983c3zkp40cqn0s5jn",
+                  "pubkey": "bhvalconspub1zcjduepqdsrs2zwhdlyjtcvzanzwx57wh2utq4twvtxd8vhjndle86wu2dxq2cw60h",
+                  "value": {
+                    "denom": "bht",
+                    "amount": "100000000000000000000000000"
+                  }
+                }
+              }
+            ],
+            "fee": {
+              "amount": [],
+              "gas": "0"
+            },
+            "signatures": [
+              {
+                "pub_key": {
+                  "type": "tendermint/PubKeySecp256k1",
+                  "value": "AuRCrEibblDacq1QfPVAFr0G/X+W/3+GoeJ4VVJMDtVy"
+                },
+                "signature": "pZaOBxZtvG0ysYcNvCUqb3bYubArmGpDfB9wxkqedsYZSNNuQyWwasO5nLDCWcHnYCCWDAWrkPgIk3qieCM2zA=="
+              }
+            ],
+            "memo": "523298422483851a8bf08ff5929bb5770995ddae@10.4.177.84:26656"
+          }
+        },
+        {
+          "type": "bhchain/StdTx",
+          "value": {
+            "msg": [
+              {
+                "type": "bhchain/MsgCreateValidator",
+                "value": {
+                  "description": {
+                    "moniker": "node3",
+                    "identity": "",
+                    "website": "",
+                    "details": ""
+                  },
+                  "commission": {
+                    "rate": "0.000000000000000000",
+                    "max_rate": "0.000000000000000000",
+                    "max_change_rate": "0.000000000000000000"
+                  },
+                  "min_self_delegation": "5000000000000000000000000",
+                  "delegator_address": "BHP843X5Lv9o5UsnkJ1Zomm8o8x2ZDNFmNN",
+                  "validator_address": "bhvaloper1ydj9q2xzy0aqhaegzf3w3etq086gv48y0e4qrq",
+                  "pubkey": "bhvalconspub1zcjduepqjrfaulrkqjvkhsatkhamseklxpt22hv7x92qlhsmyh7euz6m0xgs0v4tc3",
+                  "value": {
+                    "denom": "bht",
+                    "amount": "100000000000000000000000000"
+                  }
+                }
+              }
+            ],
+            "fee": {
+              "amount": [],
+              "gas": "0"
+            },
+            "signatures": [
+              {
+                "pub_key": {
+                  "type": "tendermint/PubKeySecp256k1",
+                  "value": "A2FqjgQNvolStoMBK5w7w3quQ1jRuwxasfH/TLeqHruJ"
+                },
+                "signature": "Mri3WCkJhrVmZEM4i7177OJ3e3RJ06hXwp0LYikYFj1fd9pg6hhGaK6zjxKVORe/nDxsEjFce9Jn7RVXFRM7gw=="
+              }
+            ],
+            "memo": "dbc87e37039da8d245374828509e323acd32e79f@10.4.177.154:26656"
+          }
+        }
+      ]
+    },
+    "gov": {
+      "starting_proposal_id": "1",
+      "deposits": null,
+      "votes": null,
+      "proposals": null,
+      "deposit_params": {
+        "min_init_deposit": [
+          {
+            "denom": "bht",
+            "amount": "100000000000000000000000"
+          }
+        ],
+        "min_deposit": [
+          {
+            "denom": "bht",
+            "amount": "10000000000000000000000000"
+          }
+        ],
+        "max_deposit_period": "172800000000000"
+      },
+      "voting_params": {
+        "voting_period": "172800000000000"
+      },
+      "tally_params": {
+        "quorum": "0.334000000000000000",
+        "threshold": "0.500000000000000000",
+        "veto": "0.334000000000000000"
+      }
+    },
+    "params": null,
+    "mint": {
+      "minter": {},
+      "params": {
+        "mint_denom": "bht",
+        "blocks_per_year": "10519200",
+        "inflation": "0.030000000000000000",
+        "initial_price": "0.100000000000000000",
+        "current_price": "0.100000000000000000",
+        "node_cost_per_month": "2600.000000000000000000"
+      }
+    },
+    "staking": {
+      "params": {
+        "unbonding_time": "1814400000000000",
+        "max_validators": 100,
+        "max_entries": 7,
+        "bond_denom": "bht",
+        "MinSelfDelegation": "5000000000000000000000000"
+      },
+      "last_total_power": "0",
+      "last_validator_powers": null,
+      "validators": null,
+      "delegations": null,
+      "unbonding_delegations": null,
+      "redelegations": null,
+      "exported": false
+    },
+    "receipt": {},
+    "crisis": {
+      "constant_fee": {
+        "denom": "bht",
+        "amount": "1000"
+      }
+    }
+  }
+}
