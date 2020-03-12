@@ -1,0 +1,5 @@
+server:
+  port: 8888
+  timeout: 120s
+  sleep: 10s
+
