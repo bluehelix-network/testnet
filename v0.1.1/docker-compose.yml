@@ -1,0 +1,20 @@
+services:
+    bhchain:
+        container_name: bhchain
+        image: bluehelixnetwork/testnet:v0.1.1
+        entrypoint: [ "/bhchain", "start", "--home", "/root/.bhchain", "--chainnode-url", "127.0.0.1:8888"]
+        depends_on:
+            - chainnode
+        ports:
+            - "26656-26657:26656-26657"
+        volumes:
+            - ~/.bhchain:/root/.bhchain
+        network_mode: host
+
+    chainnode:
+        container_name: chainnode
+        image: bluehelixnetwork/testnet-chainnode:v0.1.1
+        entrypoint: [ "chainnode", "-c", "/etc/chainnode/config.yml"]
+        ports:
+            - "8888:8888"
+        network_mode: host
