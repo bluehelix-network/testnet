@@ -30,6 +30,7 @@ For quickly starting to test Bluehelix Chain testnet, please refer to the follow
 
 [Quick Start Guide](https://github.com/bluehelix-network/docs/blob/master/source/guide/quick-start.md)
 
+
 ### Getting testnet BHT
 
 Please email to bhchain-dev@bhex.com with subject starting "Get testnet BHT: [Your Bluehelix Chain address]". We will process the emails and send you some amount of BHT for testing.
