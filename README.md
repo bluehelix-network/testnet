@@ -20,7 +20,7 @@ www.bluehelix.network
 Bluehelix Chain testnet has been released and will be frequently updated. Currently it supports:
 - PoS + PBFT consensus to produce blocks;
 - Support transferring native token BHT;
-- Support cross-chain asset: BTC, ETH and ERC20 tokens
+- Support cross-chain asset: BTC, ETH and ERC20 tokens;
 - Generating cross-chain testnet BTC/ETH deposit address;
 - Deposit, transfer, and withdraw testnet BTC/ETH from Bluehelix Chain.
 
