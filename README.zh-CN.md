@@ -31,10 +31,6 @@ Bluehelix Chain测试网已经上线并且经常进行更新。当前测试网�
 
 [快速入门指南](docs/intro.md)
 
-### 使用参考
-
-[API和命令行使用参考](docs/reference.md)
-
 ### 获得测试网的BHT
 
 请向[bhchain-dev@bhex.com](bhchain-dev@bhex.com)发送邮件获得测试网BHT。邮件标题以“获取测试网BHT: [你的Bluehelix Chain地址]“。我们处理邮件后会向该地址转入一定的BHT用于测试。
