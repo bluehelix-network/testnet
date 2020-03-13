@@ -29,7 +29,7 @@ Bluehelix Chain测试网已经上线并且经常进行更新。当前测试网�
 
 参考以下的指南，快速开始测试Bluehelix Chain测试网：
 
-[快速入门指南](https://github.com/bluehelix-network/docs)
+[快速入门指南](https://github.com/bluehelix-network/docs/blob/master/source/guide/quick-start.md)
 
 
 ### 获得测试网的BHT
