@@ -28,7 +28,8 @@ Bluehelix Chain testnet has been released and will be frequently updated. Curren
 
 For quickly starting to test Bluehelix Chain testnet, please refer to the following guide:
 
-[Quick Start Guide](https://github.com/bluehelix-network/docs)
+[Quick Start Guide](https://github.com/bluehelix-network/docs/blob/master/source/guide/quick-start.md)
+
 
 ### Getting testnet BHT
 
