@@ -17,15 +17,13 @@ www.bluehelix.network
 
 ## 测试网
 
-*注意：Bluehelix Chain测试网当前**仅支持Ethereum Ropsten测试网上的ETH**。请勿使用其他数字资产包括主网ETH，否则**将会丢失**。*
-
 Bluehelix Chain测试网已经上线并且经常进行更新。当前测试网支持以下功能：
 - PoS + PBFT共识出块；
 - 支持链上原生BHT代币的转账；
-- 支持跨链资产有：Ethereum Ropsten测试网上的ETH；
-  - 未来将支持主网的ETH，BTC和ERC20代币；
-- 生成跨链ETH测试网充币地址；
-- 在Bluehelix Chain上实现测试网ETH的跨链充币，转账和提币。
+- 支持跨链资产有：BTC, ETH和ERC20代币；
+  - 未来将支持大部分的公链；
+- 生成跨链BTC/ETH测试网充币地址；
+- 在Bluehelix Chain上实现测试网BTC/ETH的跨链充币，转账和提币。
 
 ### 快速入门
 
