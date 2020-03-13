@@ -17,15 +17,12 @@ www.bluehelix.network
 
 ## Testnet
 
-*Important notice: Bluehelix Chain testnet currently **ONLY** supports ETH on Ethereum Ropsten Testnet. Any other assets including mainnet ETH should not be used at this time, and will be **LOST**.*
-
 Bluehelix Chain testnet has been released and will be frequently updated. Currently it supports:
 - PoS + PBFT consensus to produce blocks;
 - Support transferring native token BHT;
-- Support cross-chain asset: ETH on Ethereum Ropsten Testnet
-  - Support for mainnet ETH, BTC and ERC20 tokens is in progress;
-- Generating cross-chain testnet ETH deposit address;
-- Deposit, transfer, and withdraw testnet ETH from Bluehelix Chain.
+- Support cross-chain asset: BTC, ETH and ERC20 tokens
+- Generating cross-chain testnet BTC/ETH deposit address;
+- Deposit, transfer, and withdraw testnet BTC/ETH from Bluehelix Chain.
 
 ### Quick Start
 
